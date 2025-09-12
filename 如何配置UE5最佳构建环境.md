@@ -23,7 +23,8 @@
 作用：在“优化构建”里提供接近 Debug 的调试体验（断点命中率高、调用栈与局部变量更可读）。
 
 必要条件
-- 工具链：Visual Studio 2022 17.14+，MSVC 工具集相应版本（启用 C++ Dynamic Debugging 预览特性）。
+- 工具链：Visual Studio 2022 17.14+，MSVC 14.44+(14.38是UE5.6推荐的版本，尽管UE5.6支持了动态调试，但是该版本并不支持动态调试)。
+- Visual Studio 2026测试中😁😁😁
 - 目标开关：在要调试的 Target 中设置：
   ```csharp
   WindowsPlatform.bDynamicDebugging = true;
@@ -169,3 +170,4 @@
 
 结语
 - 这套配置（Development + 动态调试 + UBA + 产物隔离仅限 Game + 共享 DDC）在实际项目中能兼顾性能、调试体验与稳定性。遇到问题优先回到“Editor 不 Unique、清理项目侧缓存、重建目标”的基线，再逐项验证。
+
