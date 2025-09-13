@@ -30,7 +30,8 @@
   WindowsPlatform.bDynamicDebugging = true;
   ```
 - 构建配置：选择 Development（而不是 Debug/DebugGame）。
-
+- 值得注意的是LiveLinkHub与UnrealEditor共用构建产物，所以LiveLinkHub也需要添加，否则会Target级的冲突，比如riderlink构建失败
+  
 验证方式
 - 在内联/优化较多的函数上下断点并单步：断点更稳定、调用栈更完整、Locals/Watch 变量更可见，即为生效。
 
@@ -170,4 +171,5 @@
 
 结语
 - 这套配置（Development + 动态调试 + UBA + 产物隔离仅限 Game + 共享 DDC）在实际项目中能兼顾性能、调试体验与稳定性。遇到问题优先回到“Editor 不 Unique、清理项目侧缓存、重建目标”的基线，再逐项验证。
+
 
