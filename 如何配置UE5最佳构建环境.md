@@ -71,16 +71,16 @@
   ```
   Engine/Build/BatchFiles/RunUAT.bat BuildCookRun -project="YourProject.uproject" -target="YourEditorTarget" -platform=Win64 -configuration=Development -UseUBA
   ```
-- Rider/VS：在 UBT 的“额外参数”里追加 `-UseUBA`。
+- Rider/VS：在 UBT 的“额外参数”里追加 `-UBA`。
 
 分布式（可选）
-- 结合 Horde 进行远程/分布式编译。仍然在 UBT 参数中添加 `-UseUBA`，并按 Horde 文档配置 Agent 与网络。
+- 结合 Horde 进行远程/分布式编译。仍然在 UBT 参数中添加 `-UBA`，并按 Horde 文档配置 Agent 与网络。
 
 验证
 - 构建日志出现 “Using Unreal Build Accelerator (UBA)” 或显示 Worker/Cache 信息。
 - 首次会预热缓存，增量构建提速明显。
 
----
+-我在UE5.7使用UBA时，出现了“error code 9666 + 自动回退”的错误，经过排查，冲突来自UBA的自定义内存分配器/内存拦截，构建参数加上"-UBANoCustomMalloc",即可解决，后续可能修复。
 
 ## 四、共享 DDC（Derived Data Cache）
 
@@ -171,6 +171,7 @@
 
 结语
 - 这套配置（Development + 动态调试 + UBA + 产物隔离仅限 Game + 共享 DDC）在实际项目中能兼顾性能、调试体验与稳定性。遇到问题优先回到“Editor 不 Unique、清理项目侧缓存、重建目标”的基线，再逐项验证。
+
 
 
 
